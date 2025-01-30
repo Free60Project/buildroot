@@ -15,6 +15,14 @@ jobs:
     - name: Install dependencies
       run: sudo apt update -yy && sudo apt install -yy build-essential
 
+    - name: retrieve ccache
+      uses: actions/cache@v4
+      with:
+        path: ~/.buildroot-ccache
+        key: ccache-${{ github.sha }}
+        restore-keys: |
+          ccache-
+
     - name: Configure defconfig
       run: make xbox360_defconfig
 

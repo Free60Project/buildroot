@@ -1,0 +1,22 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: apt update -yy && apt install -yy build-essential
+
+    - name: Configure defconfig
+      run: make xbox360_defconfig
+
+    - name: Build
+      run: make

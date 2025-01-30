@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Install dependencies
-      run: apt update -yy && apt install -yy build-essential
+      run: sudo apt update -yy && sudo apt install -yy build-essential
 
     - name: Configure defconfig
       run: make xbox360_defconfig
